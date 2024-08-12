@@ -1,0 +1,574 @@
+---
+title: "The Relation Between Car Sharing Services and the Socioeconomic Status of Users"
+format:
+  revealjs:
+    smaller: true
+    scrollable: true
+    slide-number: true
+    logo: logo1.png
+    editor: visual
+author: "**Eshel** Peri  324127430, **Nir** Vaisburd 316282631, **Adir** Pearl 336321476"
+---
+
+## Research Question :
+
+The Relation Between Car Sharing Services and the Socioeconomic Status of Users
+
+![](logo.png)
+
+```{=html}
+<style>
+.reveal .slide-number {
+  bottom: 10px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  text-align: center;
+  width: 100%;
+  position: fixed !important;
+  top: auto !important;
+}
+
+
+.reveal .slide-logo {
+  position: absolute !important; 
+  right: 10px !important; 
+  width: 180px !important;
+  height: 150px !important;
+}
+</style>
+
+  
+```
+## Introduction and Methodology:
+
+-   Traffic congestion is a global issue, and public transportation is one of the main ways cities are trying to improve and reduce congestion. Car Sharing Services are a relatively new option of public transport. They offer an alternative to private cars. One of the intriguing questions is about the willingness of the public to give up the private car, and the connection to their socioeconomic status.
+
+-   Our research hypothesis is that the wealthier class prefer to own their own cars, while the other classes would prefer car-sharing services to save on car maintenance and ownership costs.
+
+-   We chose the AutoTel program, operated by the municipality of Tel Aviv-Yaffo, as an example of a car sharing service. Our goal is to analyze the relation between socioeconomic status of Tel Aviv residents and the usage patterns of the AutoTel car-sharing.
+
+-   In order to examine the hypothesis, we collected data on usage of AutoTel sharing cars, which includes the geographic coordinates of the cars during the whole year of 2022. Then we aggregated the data to statistical zones by performing a spatial join.  The second set of data we collected includes socioeconomic status indicators by statistical zones. After collecting the data, we analyzed the connection between specific socioeconomic variables, and the usage of AutoTel car-sharing services at aforementioned statistical zones.
+
+## Literature 1:
+
+#### Car-Sharing Services: An Annotated Review
+
+-   Car sharing services offer the flexibility of private mobility, without the need for individual vehicle ownership, thus actually transforming private mobility into a public service. This new form of transportation is increasing the mobility of public transportation users.
+
+-   Adding this service can raise awareness of the social and environmental impacts of private car usage and increase support for multimodal transportation. Car share services allow people to combine different ways of travel such as trains, buses, bicycles and private cars in a single trip.
+
+-   There are three kinds of car sharing services:
+
+1.  **One-way** - The cars are parked at parking lots that are designated by the service provider, and the trips must start and end at the same place.
+
+2.  **Tow-way** - The parking lot where the trip ends can be a different one from the parking lot from which it started, in a variety of parking lots designated by the operator.
+
+3.  **Free-Floating**: In this method cars are parked freely in public spaces within the operating area ,the trip can start and end at any point in this area.
+
+-   In order to succeed, car sharing companies must consider strategic and economic decisions when planning the service that affect the users; such as defining fleet size, location of facilities, boundaries of urban areas service, and managing the local demand.
+
+-   Experience shows that car sharing services are more popular in high-density neighborhoods, where public transportation is more efficient and private car use is less frequent. It suggests that car sharing can be a supplementary component of the public transportation services
+
+## Literature 2:
+
+#### Human Mobility and Socioeconomic Status: An Analysis of Singapore and Boston
+
+-   The study checks the relation between sociology-economic status and mobility/accessibility, zooming on mobility of populations and the influence of regional economics.
+
+-   The data Included mapping movement patterns, considering the spatial extent of the individual’s activity space, the frequency of daily mobility and the variety of movements between important activity locations.
+
+-   The study's hypothesis is that human patterns are related to their regional sociology-economic characteristics, such as income per capita and poverty rate.
+
+-   The study uses two types of socioeconomic data - housing prices in Singapore and per capita income in Boston.
+
+-   The level of mobility is estimated through the spatial scope of a person’s activity through space: how consistent his mobility is on a daily basis, the variety of movements between important activity locations, and the unity of mobility traces.
+
+-   Findings show different patterns at each city: wealthier user groups tend to travel [shorter]{.underline} distances in Singapore relative to other groups, while the opposite happens in Boston - wealthier user groups tend to travel [farther]{.underline} than other groups. Other mobility indicators, such as the number of activity locations, activity and travel variety, show similar characteristics in different socioeconomic classes.
+
+-   The conflicting findings of the article on both cities show a complicated relation between travel distance and wealth, and suggest that results can be largely explained by the spatial shape of cities. In the United States, wealthier people live in the suburbs and more disadvantaged people occupy city centers, and the opposite in Singapore.
+
+-   We can conclude then, that patterns of mobility are not always global and are rather influenced by the spatial arrangement of cities themselves. We can also conclude that there is a global (and maybe expected) pattern: wealth influences mobility, to the benefit of the higher socioeconomic groups, adapted to the local conditions.
+
+## Literature 3:
+
+#### Does Car Sharing Contribute to Urban Sustainability from a User Motivation Perspective?
+
+-   The world is facing many sustainability challenges, especially with the need for economic development amid climate change.
+
+-   In recent years, people have been looking for technologies that provide better sustainable service access, leading to the quick rise of the sharing economy.
+
+-   The sharing economy is a way to reduce the environmental impact and costs of products and increase the availability of means of transportation. Car sharing is a part of the sharing economy that allows people to use cars when needed without having to buy one.
+
+-   A study surrounding the motivation of people to use shared vehicles, found that economic benefits are the most influential in a user’s choice to use a car sharing service. Hence, car sharing can be considered as an alternative viable mobility solution, and that the economic benefits are the strongest motivating factor for using car sharing services.
+
+## Literature 4:
+
+#### Car sharing adoption intention in urban areas: What are the key Socioeconomic drivers?
+
+-   Car sharing services are common in high-density metropolitan areas, and allow for avoiding congestion, parking and pollution problems. Choosing a shared car means reducing emissions and the length of trips.
+
+-   An encouraging way for the use of shared car services is restrictions on parking in denser areas of the city, which strengthens the potential for the use of shared cars.
+
+-   The study indicates that car-sharing users are more educated, urban, middle/high income, younger adults who live alone or in small households without children. Older people are less likely to use the service, most probably because of old habits.
+
+-   Other indications show that drivers who drive infrequently, tend to use more car-sharing services, suggesting that primary drivers have a greater need for continuous access to their private car.
+
+## Indices For Testing The Hypothesis:
+
+The articles provide a scientific background for the research, and suggest that using car-sharing services tends to be impacted by the economic status of the users.
+
+That is why we hypothesize that travel behavior and volume gets influenced by socioeconomic elements. We think users are motivated more by saving money than by saving the environment or social advantages. To analyze this assumption, we are using:
+
+-   **Cars_per_capita**: Rate of sharing cars usage divided by population
+
+-   **age_y_pec**: Young people percentage in population
+
+-   **age_a_pec**: Adult people percentage in population
+
+-   **Vehicle2up_pcnt**: Percentage of households with two or more vehicles.
+
+-   **SelfEmployedAnnual_medWage**: Median annual wage for self-employed individuals
+
+-   **Parking_pcnt**: Percentage of households with parking facilities.
+
+-   **AcadmCert_pcnt**: Percentage of the population with an academic certificate.
+
+-   **SelfEmployedAnnual_medWage**: Median annual wage for self-employed individuals.
+
+-   **Economics_Index**: Social economic index from LAMS tables
+
+## Libraries
+
+```{r,echo=TRUE}
+library(sf)
+library(dplyr)
+library(tidyverse)
+library(corrgram)
+library(gridExtra)
+library(mapview)
+```
+
+## Data
+
+Raw data of AutoTel cars in Tel Aviv
+
+```{r,echo=TRUE}
+tel_auto_tel=read.csv("at_origin.csv")
+
+dim(tel_auto_tel)
+head(tel_auto_tel,3)
+```
+
+Statistical zones data
+
+```{r,echo=TRUE}
+tel <- read.csv("tel_table.csv")
+
+dim(tel)
+head(tel, 3)
+```
+
+Lamas statistical zones data tables
+
+```{r,echo=TRUE}
+
+lamas <- read.csv("lams_2022.csv")
+dim(lamas)
+head(lamas, 3)
+
+eshkol <- read.csv("eshkol.csv")
+dim(eshkol)
+head(eshkol, 3)
+
+```
+
+## Spatial Data Transformation
+
+We conducted a **spatial join-count** in ArcGIS Pro, linking the AutoTel table containing coordinates with the Tel Aviv statistical zones layer. This enabled us to count the number of points (cars per capita) within each polygon.
+
+<img src="img12.png" alt="The spatial data analysis" style="max-width: 100%; height: auto;"/>
+
+**Alternative way with 'sf' library:**
+
+```{r,eval=FALSE,echo=TRUE}
+# Load shapefiles
+poligon=st_read("pol1.shp")
+points=st_read("points1.shp")
+# Spatial join of points with polygons
+points=st_join(points,poligon)
+# Summarize point counts by 'msezor'
+points=points|>group_by(msezor)|>summarise(count=n())
+# Drop geometry column and join summary with polygon data
+points=st_drop_geometry(points)
+poligon=left_join(poligon,points)
+```
+
+## Tidying Data {.scrollable}
+
+Arrange the data into one table for statistical analysis.
+
+```{r,echo=TRUE}
+# Calculate age-related and cars per capita columns
+tel <- tel |> 
+  mutate(age_y_pec = (g20to24 + g25to29) / sumpop) |> 
+  mutate(age_a_pec = (g30to34 + g35to39 + g40to44 + g45to49 + g50to54 + g55to59 + g60to64) / sumpop) |> 
+  mutate(Cars_per_capita = start / sumpop) |> 
+  select(msezor, age_y_pec, age_a_pec, Cars_per_capita)
+
+# Filter and select columns from the lamas table
+lamas_filtered <- lamas |> 
+  filter(LocNameHeb == "תל אביב -יפו") |> 
+  select(StatArea, Vehicle2up_pcnt, employeesAnnual_medWage, Parking_pcnt, AcadmCert_pcnt, SelfEmployedAnnual_medWage)
+
+# Left join tel with filtered lamas data
+merged_data <- left_join(tel, lamas_filtered, by = c("msezor" = "StatArea"))
+
+# Filter and select relevant columns from the eshkol table
+eshkol_filtered <- eshkol |> 
+  filter(yeshoove_h == "תל אביב -יפו") |> 
+  select(CODE.OF.STATISTICAL.AREA, INDEX.VALUE.2019.2.)
+
+# Another left join with filtered eshkol data
+final_data <- left_join(merged_data, eshkol_filtered, by = c("msezor" = "CODE.OF.STATISTICAL.AREA"))
+
+```
+
+## Filling Missing Data and Renaming
+
+```{r,echo=TRUE}
+# Replace NA values with 0
+final_data <- final_data |>
+  mutate(across(everything(), ~ replace_na(., 0)))
+
+# Replace Inf values with 0
+final_data <- final_data |>
+  mutate_all(~ replace(., is.infinite(.), 0))
+
+# Rename column
+final_data <- final_data |>
+  rename(Economics_Index = INDEX.VALUE.2019.2.)
+
+# Arrange by 'Cars_per_capita' in descending order
+final_data <- final_data |>
+  arrange(desc(Cars_per_capita))
+
+# Set the top 2 values of 'Cars_per_capita' to 0
+final_data$Cars_per_capita[1:2] <- 0
+
+# Filter out rows where 'Cars_per_capita' is 0
+final_data <- final_data |>
+  filter(Cars_per_capita != 0)
+```
+
+## Summary Data
+
+### The final data to analyze
+
+```{r,echo=TRUE}
+summary(final_data)
+dim(final_data)
+```
+
+## Geo-spatial Data Visualization
+
+-   Interactive Maps with Clickable Columns Displaying Data for Each Statistical Zone
+
+```{r, echo=TRUE,results='hide'}
+ polygon <- st_read("layer22/pol1.shp")
+```
+
+```{r, echo=TRUE}
+polygon <- polygon |>
+  select(msezor)
+
+spatial_data <- left_join(polygon, final_data)
+
+mapview(spatial_data)
+```
+
+-   Maps with Graduated Colors Based on Table Columns
+
+```{r, echo=TRUE}
+
+for (i in 2:10) {plot(spatial_data[,i])}
+  
+```
+
+## Independence of Observations
+
+```{r,echo=TRUE, message=FALSE, warning=FALSE}
+corrgram(final_data,upper.panel=panel.conf)
+
+```
+
+Using the corrgram function, we observe that there is a weak to strong correlation between the variables, that is showing the linearity of their releations There is a multicollinearity to the variables: yeesAnnual_med, Parking_pcnt, AcadmCert_pcnt, and employedAnnual_me. This means these variables are **highly correlated** with each other and not only with a single variable. In this cases, the model remains useful for prediction but not suitable for measuring the individual influence of these variables due to independence of observations.
+
+## Checking for Linearity Between Predictor Variables and the Response Variable (Cars_per_capita)
+
+```{r,echo=TRUE}
+ggplot(final_data, aes(y = (Cars_per_capita),x=(age_y_pec))) +
+  geom_point(color = "blue")+geom_smooth(method = "lm") +labs(
+    title = " Cars per Capita vs. precen of Age Below 30",
+    x = "young poplation precneteg ", 
+    y = "sharing cra using to poplation" 
+  )
+ggplot(final_data, aes(y = Cars_per_capita,x=age_a_pec)) +
+  geom_point(color = "blue")+geom_smooth(method = "lm") +labs(
+      title = "Cars per Capita vs. Percentage of Adults",
+    x = "age_a_pec", 
+    y = "Cars_per_capita" 
+  )
+
+ggplot(final_data, aes(y = Cars_per_capita,x=Vehicle2up_pcnt)) +
+  geom_point(color = "blue")+geom_smooth(method = "lm") +labs(
+    title = " Cars per Capita vs. Percentage of Households with Two or More Vehicles",
+    x = "Vehicle2up_pcnt", 
+    y = "Cars_per_capita" 
+  )
+
+
+
+ggplot(final_data, aes(y = Cars_per_capita,x=employeesAnnual_medWage)) +
+  geom_point(color = "blue")+geom_smooth(method = "lm") +labs(
+    title = " Cars per Capita vs. Median Annual Wage of Employees",
+    x = "employeesAnnual_medWage", 
+    y = "Cars_per_capita" 
+  )
+
+
+
+ggplot(final_data, aes(y = Cars_per_capita,x=Parking_pcnt)) +
+  geom_point(color = "blue")+geom_smooth(method = "lm") +labs(
+    title = " Cars per Capita vs. Percentage of Parking Availability",
+    x = "Parking_pcnt", 
+    y = "Cars_per_capita" 
+  )
+
+
+
+
+ggplot(final_data, aes(y = Cars_per_capita,x=AcadmCert_pcnt)) +
+  geom_point(color = "blue")+geom_smooth(method = "lm") +labs(
+    title = " Cars per Capita vs. Percentage of Population with Academic Certificates",
+    x = "AcadmCert_pcnt", 
+    y = "Cars_per_capita" 
+  )
+
+
+
+
+
+ggplot(final_data, aes(y = Cars_per_capita,x=SelfEmployedAnnual_medWage)) +
+  geom_point(color = "blue")+geom_smooth(method = "lm") +labs(
+    title = "Cars per Capita vs. Median Annual Wage of Self-Employed",
+    x = "SelfEmployedAnnual_medWage", 
+    y = "Cars_per_capita" 
+  )
+
+
+
+ggplot(final_data, aes(y = Cars_per_capita,x=Economics_Index)) +
+  geom_point(color = "blue")+geom_smooth(method = "lm") +labs(
+    title = "Cars per Capita vs. Economic Index",
+    x = "SelfEmployedAnnual_medWage", 
+    y = "Cars_per_capita" ,
+ 
+  )
+
+```
+
+## Data Visualization
+
+Present all the scatter plots in a single view.
+
+```{r}
+  
+  plot1 <- ggplot(final_data, aes(y = sqrt(Cars_per_capita), x = sqrt(age_y_pec))) +
+    geom_point(color = "blue") + 
+    geom_smooth(method = "lm") +
+    labs(
+      title = "Cars_per_capita vs. age_y_pec",
+      x = "age g20-to29 in population",
+      y = "sharing cra using to population"
+    )
+  
+  plot2 <- ggplot(final_data, aes(y = Cars_per_capita, x = age_a_pec)) +
+    geom_point(color = "blue") + 
+    geom_smooth(method = "lm") +
+    labs(
+      title = "Cars_per_capita vs. age_a_pec",
+      x = "age_a_pec",
+      y = "Cars_per_capita"
+    )
+  
+  plot3 <- ggplot(final_data, aes(y = Cars_per_capita, x = Vehicle2up_pcnt)) +
+    geom_point(color = "blue") + 
+    geom_smooth(method = "lm") +
+    labs(
+      title = "Cars_per_capita vs. Vehicle2up_pcnt",
+      x = "Vehicle2up_pcnt",
+      y = "Cars_per_capita"
+    )
+  
+  plot4 <- ggplot(final_data, aes(y = Cars_per_capita, x = employeesAnnual_medWage)) +
+    geom_point(color = "blue") + 
+    geom_smooth(method = "lm") +
+    labs(
+      title = "Cars_per_capita vs. employeesAnnual_medWage",
+      x = "employeesAnnual_medWage",
+      y = "Cars_per_capita"
+    )
+  
+  plot5 <- ggplot(final_data, aes(y = Cars_per_capita, x = Parking_pcnt)) +
+    geom_point(color = "blue") + 
+    geom_smooth(method = "lm") +
+    labs(
+      title = "Cars_per_capita vs. Parking_pcnt",
+      x = "Parking_pcnt",
+      y = "Cars_per_capita"
+    )
+  
+  plot6 <- ggplot(final_data, aes(y = Cars_per_capita, x = AcadmCert_pcnt)) +
+    geom_point(color = "blue") + 
+    geom_smooth(method = "lm") +
+    labs(
+      title = "Cars_per_capita vs. AcadmCert_pcnt",
+      x = "AcadmCert_pcnt",
+      y = "Cars_per_capita"
+    )
+  
+  plot7 <- ggplot(final_data, aes(y = Cars_per_capita, x = SelfEmployedAnnual_medWage)) +
+    geom_point(color = "blue") + 
+    geom_smooth(method = "lm") +
+    labs(
+      title = "Cars_per_capita vs. SelfEmployedAnnual_medWage",
+      x = "SelfEmployedAnnual_medWage",
+      y = "Cars_per_capita"
+    )
+  
+  plot8 <- ggplot(final_data, aes(y = Cars_per_capita, x = Economics_Index)) +
+    geom_point(color = "blue") + 
+    geom_smooth(method = "lm") +
+    labs(
+      title = "Cars_per_capita vs. Economics_Index",
+      x = "Economics_Index",
+      y = "Cars_per_capita"
+    )
+  
+  # Arrange all the plots in a grid
+  grid.arrange(plot1, plot2, plot3, plot4, plot5, plot6, plot7, plot8, ncol = 2)
+  
+```
+
+We can see a linear connection
+
+## Normality Test
+
+```{r,echo=TRUE}
+shapiro_results <- sapply(final_data, function(x) if(is.numeric(x)) shapiro.test(x)$p.value else NA)
+shapiro_results
+```
+
+::: {style="font-size: 0.8em;"}
+| Variable                   | P-value   | Normality              |
+|----------------------------|-----------|------------------------|
+| msezor                     | 3.296e-07 | Not normal (p \< 0.05) |
+| age_y_pec                  | 2.236e-07 | Not normal (p \< 0.05) |
+| age_a_pec                  | 3.378e-06 | Not normal (p \< 0.05) |
+| Cars_per_capita            | 2.889e-13 | Not normal (p \< 0.05) |
+| Vehicle2up_pcnt            | 1.150e-13 | Not normal (p \< 0.05) |
+| employeesAnnual_medWage    | 7.134e-12 | Not normal (p \< 0.05) |
+| Parking_pcnt               | 2.297e-13 | Not normal (p \< 0.05) |
+| AcadmCert_pcnt             | 4.178e-13 | Not normal (p \< 0.05) |
+| SelfEmployedAnnual_medWage | 1.444e-11 | Not normal (p \< 0.05) |
+| Economics_Index            | 3.191e-07 | Not normal (p \< 0.05) |
+:::
+
+## Normality Cars_per_capita Ratios
+
+```{r,echo=TRUE}
+ggplot(data = final_data)+geom_histogram(aes(x=Cars_per_capita),fill = "skyblue", color = "black")
+
+```
+
+### After a Linear Transformation, Severe Left-Skewed Data Is Still Not Normal
+
+```{r,echo=TRUE}
+ggplot(data = final_data)+geom_histogram(aes(x=1/Cars_per_capita),fill = "skyblue", color = "black")
+
+```
+
+## Correlation Test: Kendall
+
+### Kendall Due to Non-Normal Data
+
+```{r,echo=TRUE, results = 'hide'}
+cor1 = cor.test(final_data$Cars_per_capita, final_data$age_y_pec, method = "kendall")
+print(cor1)
+cor2 = cor.test(final_data$Cars_per_capita, final_data$age_a_pec, method = "kendall")
+print(cor2)
+cor3 = cor.test(final_data$Cars_per_capita, final_data$Vehicle2up_pcnt, method = "kendall")
+print(cor3)
+cor4 = cor.test(final_data$Cars_per_capita, final_data$employeesAnnual_medWage, method = "kendall")
+print(cor4)
+cor5 = cor.test(final_data$Cars_per_capita, final_data$Parking_pcnt, method = "kendall")
+print(cor5)
+cor6 = cor.test(final_data$Cars_per_capita, final_data$AcadmCert_pcnt,method = "kendall")
+print(cor6)
+cor7 = cor.test(final_data$Cars_per_capita, final_data$SelfEmployedAnnual_medWage,method = "kendall")
+print(cor7)
+cor8 = cor.test(final_data$Cars_per_capita, final_data$Economics_Index,method = "kendall")
+print(cor8)
+```
+
+::: {style="font-size: 0.8em;"}
+| Variables                                    | tau   | z-value | p-value | Interpretation     |
+|----------------------------------------------|-------|---------|---------|--------------------|
+| Cars_per_capita & age_y_pec                  | 0.089 | 1.628   | 0.1035  | Not significant    |
+| Cars_per_capita & age_a_pec                  | 0.175 | 3.206   | 0.00135 | Highly significant |
+| Cars_per_capita & Vehicle2up_pcnt            | 0.052 | 0.894   | 0.3714  | Not significant    |
+| Cars_per_capita & employeesAnnual_medWage    | 0.126 | 2.170   | 0.0300  | Significant        |
+| Cars_per_capita & Parking_pcnt               | 0.102 | 1.761   | 0.0782  | Not significant    |
+| Cars_per_capita & AcadmCert_pcnt             | 0.152 | 2.629   | 0.0086  | Significant        |
+| Cars_per_capita & SelfEmployedAnnual_medWage | 0.106 | 1.822   | 0.0684  | Not significant    |
+| Cars_per_capita & Economics_Index            | 0.178 | 3.256   | 0.0011  | Highly significant |
+:::
+
+## Linear Regression Model
+
+```{r,echo=TRUE}
+lm1 <- lm(Cars_per_capita ~ age_y_pec + age_a_pec + Vehicle2up_pcnt + 
+           employeesAnnual_medWage + Parking_pcnt + AcadmCert_pcnt + 
+           Economics_Index, data = final_data)
+
+summary(lm1)
+```
+
+There are **153** observations in the data-dataset (145 degrees of freedom with 7 predictors). The linear regression model indicates that only the Vehicle2up_pcnt predictor has a statistically significant effect on Cars_per_capita at the 5% significance level. The other predictors do not show significant effect as all **p-values** are above **0.05**. The model explains **7.41%** of the variables in Cars_per_capita (Multiple **R-squared**: **0.0741**, Adjusted **R-squared**: **0.0294**), indicating a **poor fit.**
+
+There are statistically significant correlations between Cars_per_capita and some individual variables, the linear regression model does not explain much of the data. Despite these significant correlations, the linear regression model has a low R-squared value (**0.07409**) and non-significant p-values for the predictors, indicating that the model explains only a small fraction of the variance. This discrepancy is likely due to multicollinearity, with high correlations among multiple predictors when grouped together.
+
+## Conclusions
+
+We can conclude that there isn't a significant relation between car sharing services usage and socioeconomic status.
+
+After statistical analysis using linear regression model, none of the indicators predict high usage of car sharing services. It means that there is no connection between them.
+
+Future studies can continue investigating with more data to find the nature of the relation between the fields that we've examined - economics and transportation.
+
+## Bibliography
+
+**1.** Ferrero, F., Perboli, G., Rosano, M., & Vesco, A. (2018). Car-sharing services: An annotated review. Sustainable Cities and Society, 37, 501-518.‏
+
+**2.** Xu, Y., Belyi, A., Bojic, I., & Ratti, C. (2018). Human mobility and socioeconomic status: Analysis of ingapore and Boston. Computers, Environment and Urban Systems, 72, 51-67.‏
+
+**3.** Mavlutova, I., Kuzmina, J., Uvarova, I., Atstaja, D., Lesinskis, K., Mikelsone, E., & Brizga, J. (2021). Does car sharing contribute to urban sustainability from user-motivation perspectives?. Sustainability, 13(19), 10588.‏
+
+**4.** Prieto, M., Baltas, G., & Stan, V. (2017). Car sharing adoption intention in urban areas: What are the key sociodemographic drivers?. Transportation Research Part A: Policy and Practice, 101, 218-227.‏
+
+## Data Sources
+
+1.  [data set sources:open data-](https://opendata.tel-aviv.gov.il/)
+2.  [lamas-](https://opendata.tel-aviv.gov.il/)
+3.  [gis-TLV-](https://gisn.tel-aviv.gov.il/iView2js4/index.aspx)
+4.  [git hub rposetory](https://github.com/eshel1/ads123.git)
